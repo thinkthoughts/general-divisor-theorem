@@ -145,6 +145,62 @@ The full Challenge/Solution pair has passed Comparator verification, and the com
 
 The verification pipeline has also been run successfully from a fresh repository clone.
 
+## Related Formalizations and Collaboration
+
+This repository is the standalone Lean formalization and verified Challenge/Solution artifact for the General Divisor Theorem.
+
+Subsequent work developed the theorem in two additional directions.
+
+### GAP integration
+
+The repository
+
+https://github.com/thinkthoughts/gap-lean4-port-gdt
+
+integrates the GDT specification with the formally verified modular-residue machinery in Volkan Dağlı's `gap-lean4-port`.
+
+That development proves and packages the admissibility dichotomy, exact period and minimal period, exact per-period count, density, specification-conformance identities, correction factor, concrete examples, and GAP-facing residue/unit statements.
+
+Its leading specification remains the GDT mathematical source:
+
+https://antiviolence.ai/gdt.pdf
+
+### Independent pCwOrM formalization
+
+The GAP integration work led to a cross-repository collaboration with Volkan Dağlı ([@pCwOrM](https://github.com/pCwOrM)).
+
+A ChatGPT-assisted implementation roadmap developed with Dan Hawkley was shared with Volkan, who subsequently produced an independent standalone GDT formalization:
+
+https://github.com/pCwOrM/general-divisor-theorem
+
+Zenodo DOI:
+
+https://doi.org/10.5281/zenodo.23316070
+
+Volkan's repository also includes `VolkanBridge.lean`, which connects his GDT API with the prime-support specification used in the GAP integration work.
+
+Together, the repositories provide complementary verification paths:
+
+```text
+mathematical GDT specification
+        ↓
+thinkthoughts/general-divisor-theorem
+        ↓
+verified Challenge/Solution artifact
+
+mathematical GDT specification
+        ↓
+thinkthoughts/gap-lean4-port-gdt
+        ↓
+verified GAP residue machinery
+        ↕
+VolkanBridge
+        ↕
+pCwOrM/general-divisor-theorem
+```
+
+The projects are related but intentionally remain distinct: this repository preserves the standalone theorem artifact, while the GAP fork and pCwOrM repository provide integration and independent cross-repository validation.
+
 ## Release
 
 The first release is:
@@ -154,3 +210,5 @@ v1.0.0
 ```
 
 It records the initial standalone formalization and verified Challenge/Solution artifact for the General Divisor Theorem.
+
+Later cross-repository integrations and independent formalizations are documented above; `v1.0.0` remains the reference release for the original standalone verified artifact.
